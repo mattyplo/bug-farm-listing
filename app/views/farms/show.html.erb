@@ -5,3 +5,7 @@
 <a href="<%= @farm.website %>" target="_blank">website</a>
 <br>
 <p><%= @farm.name %> is based in <%= @farm.country %>
+
+<%= link_to 'Edit', edit_farm_path(@farm) %> |
+<%= link_to 'Delete', farm_path(@farm), method: :delete, data: { confirm: "Are you sure" } %> |
+<%= link_to 'Return to Farms Listing', farms_path %>

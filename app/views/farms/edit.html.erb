@@ -1,32 +1,5 @@
 <h1>Edit Farm Listing</h1>
 
-<% if @farm.errors.any? %>
-  <h2> The following errors prevented the farm from being saved </h2>
-  <ul>
-    <% @farm.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'form' %>
 
-<%= form_with(model: @farm, local: true) do |f| %>
-  <p>
-    <%= f.label :title %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :website %><br/>
-    <%= f.text_field :website %>
-  </p>
-  <p>
-    <%= f.label :country %><br/>
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= link_to "Farms Listing", farms_path %>

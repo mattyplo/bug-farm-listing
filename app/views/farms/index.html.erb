@@ -19,11 +19,11 @@
         <td><%= farm.country %></td>
         <td><a href="<%= farm.website %>" target="_blank">website</a></td>
         <td><%= link_to 'Show', farm_path(farm.id) %></td>
-        <td><%= link_to 'Edit' %></td>
-        <td><%= link_to 'Delete', method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to 'Edit', edit_farm_path(farm.id) %></td>
+        <td><%= link_to 'Delete', farm_path(farm.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'Create new farm' %></p>
+<p><%= link_to 'Create new farm', new_farm_path %></p>

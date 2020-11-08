@@ -1,7 +1,7 @@
 class FarmsController < ApplicationController
+  before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
   def show
-    @farm = Farm.find(params[:id])
   end
 
   def index
@@ -13,7 +13,7 @@ class FarmsController < ApplicationController
   end
 
   def create
-    @farm = Farm.new(params.require(:farm).permit(:name, :description, :country, :website))
+    @farm = Farm.new(farm_params)
     if @farm.save
       flash[:notice] = "Farm was created successfully."
       redirect_to @farm
@@ -23,12 +23,10 @@ class FarmsController < ApplicationController
   end
 
   def edit
-    @farm = Farm.find(params[:id])
   end
 
   def update
-    @farm = Farm.find(params[:id])
-    if @farm.update(params.require(:farm).permit(:name, :description, :country, :website))
+    if @farm.update(farm_params)
       flash[:notice] = "Farm was updated successfully."
       redirect_to @farm
     else
@@ -36,4 +34,19 @@ class FarmsController < ApplicationController
     end
   end
 
+  def destroy
+    @farm.destroy
+    redirect_to farms_path
+  end
+
+  private
+
+  def set_farm
+    @farm = Farm.find(params[:id])
+  end
+
+  def farm_params
+    params.require(:farm).permit(:name, :description, :website, :country)
+  end
+  
 end
