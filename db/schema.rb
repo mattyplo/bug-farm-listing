@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_041216) do
+ActiveRecord::Schema.define(version: 2020_11_13_062446) do
 
   create_table "farms", force: :cascade do |t|
     t.string "name"
     t.string "website"
     t.string "country"
     t.text "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
