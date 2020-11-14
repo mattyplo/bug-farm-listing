@@ -1,11 +1,22 @@
-<h1>Showing Farm Details</h1>
-
-<h2><%= @farm.name %></h2>
-<p><%= @farm.description %></p>
-<a href="<%= @farm.website %>" target="_blank">website</a>
-<br>
-<p><%= @farm.name %> is based in <%= @farm.country %>
-
-<%= link_to 'Edit', edit_farm_path(@farm) %> |
-<%= link_to 'Delete', farm_path(@farm), method: :delete, data: { confirm: "Are you sure" } %> |
-<%= link_to 'Return to Farms Listing', farms_path %>
+<div id="page-content">
+  <div class="container">    
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-body">
+              <h5 class="card-title"><%= @farm.name %></h5>
+              <p class="card-text"><%= @farm.description %></p>
+              <%= link_to "website", @farm.website, target: "_blank", class:"card_text" %>
+              <p class="card-text">Country: <%= @farm.country %></p>
+              <%= link_to "edit", edit_farm_path(@farm), class: "btn btn-outline-info" %>
+              <%= link_to "delete", farms_path, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            </div>
+            <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(@farm.created_at) %> ago,
+              edited <%= time_ago_in_words(@farm.updated_at) %> ago</small> 
+            </div>
+          </div>
+        </div>
+      </div> 
+  </div>
+</div>
