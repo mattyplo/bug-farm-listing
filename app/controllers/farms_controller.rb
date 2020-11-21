@@ -14,6 +14,7 @@ class FarmsController < ApplicationController
 
   def create
     @farm = Farm.new(farm_params)
+    @farm.user = User.first
     if @farm.save
       flash[:notice] = "Farm was created successfully."
       redirect_to @farm
