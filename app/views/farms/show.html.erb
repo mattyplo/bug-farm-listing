@@ -12,8 +12,11 @@
         </div>
         <div class="card-footer text-muted">
           <small>Created <%= time_ago_in_words(@farm.created_at) %> ago,
-          edited <%= time_ago_in_words(@farm.updated_at) %> ago - added by 
-          <%= @farm.user.username if @farm.user %></small>
+          edited <%= time_ago_in_words(@farm.updated_at) %> ago
+          <% if @farm.user %>
+            added by - <%= link_to @farm.user.username, user_path(@farm.user) %>
+          <% end %>  
+          </small>
         </div>
       </div>
     </div>

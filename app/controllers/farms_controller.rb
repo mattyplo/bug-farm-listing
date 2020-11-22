@@ -5,7 +5,7 @@ class FarmsController < ApplicationController
   end
 
   def index
-    @farms = Farm.all
+    @farms = Farm.paginate(page: params[:page], per_page: 5)
   end
 
   def new
