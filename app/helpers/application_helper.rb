@@ -7,4 +7,13 @@ module ApplicationHelper
     gravatar_url = "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
     image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block")
   end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end 
+
+  def logged_in?
+    # The double exclamation marks turn the current_user method / variable into a boolean
+    !!current_user
+  end
 end
