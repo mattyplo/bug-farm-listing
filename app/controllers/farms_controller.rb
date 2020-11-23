@@ -1,5 +1,7 @@
 class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -49,5 +51,11 @@ class FarmsController < ApplicationController
   def farm_params
     params.require(:farm).permit(:name, :description, :website, :country)
   end
-  
+
+  def require_same_user
+    if current_user != @farm.user
+      flash[:alert] = "You can only edit or delete your own farm listing"
+      redirect_to @farm 
+    end
+  end
 end
