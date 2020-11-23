@@ -7,8 +7,10 @@
           <p class="card-text"><%= @farm.description %></p>
           <%= link_to "website", @farm.website, target: "_blank", class:"card_text" %>
           <p class="card-text">Country: <%= @farm.country %></p>
-          <%= link_to "edit", edit_farm_path(@farm), class: "btn btn-outline-info" %>
-          <%= link_to "delete", farms_path, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <% if logged_in? && @farm.user == current_user %>
+            <%= link_to "edit", edit_farm_path(@farm), class: "btn btn-outline-info" %>
+            <%= link_to "delete", farms_path, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small>Created <%= time_ago_in_words(@farm.created_at) %> ago,
