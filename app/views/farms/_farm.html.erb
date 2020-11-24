@@ -9,7 +9,7 @@
             <%= link_to "website", farm.website, target: "_blank", class:"card_text" %>
             <p class="card-text">Country: <%= farm.country %></p>
             <%= link_to "view", farm_path(farm), class: "btn btn-outline-success" %>
-            <% if logged_in? && farm.user == current_user %>
+            <% if logged_in? && (farm.user == current_user || current_user.admin?) %>
               <%= link_to "edit", edit_farm_path(farm), class: "btn btn-outline-info" %>
               <%= link_to "delete", farm_path(farm), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
             <% end %>

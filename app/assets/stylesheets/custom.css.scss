@@ -53,21 +53,21 @@ body {
     border-radius: 5px;
    }
   .flickr_pagination .disabled {
-    color: #aaaaaa; }
+    color: #556B2F; }
   .flickr_pagination .current {
     font-style: normal;
     font-weight: bold;
-    color: #ff0084; }
+    color: #A0522D; }
   .flickr_pagination a {
-    border: 1px solid whitesmoke;
-    color: whitesmoke;
+    border: 1px solid #556B2F;
+    color: #556B2F;
     text-decoration: none; }
     .flickr_pagination a:hover, .flickr_pagination a:focus {
       border-color: gray;
-      background: whitesmoke;
+      background: 556B2F;
       color: gray; }
   .flickr_pagination .page_info {
-    color: #aaaaaa;
+    color: #556B2F;
     padding-top: 0.8em; }
   .flickr_pagination .previous_page, .flickr_pagination .next_page {
     border-width: 2px; }
