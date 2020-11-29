@@ -2,6 +2,12 @@ require 'test_helper'
 
 class CreateBugTypeTest < ActionDispatch::IntegrationTest
   
+  setup do 
+    @admin_user = User.create(username: "johndoe", email: "johndoe@example.com", 
+                              password: "password", admin: true)
+    sign_in_as(@admin_user)
+  end
+
   test "get new bug_type form and create bug_type" do
     get "/bug_types/new"
     assert_response :success

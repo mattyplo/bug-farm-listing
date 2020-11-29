@@ -13,11 +13,13 @@ class BugTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    sign_in_as(@admin_user)
     get new_bug_type_url
     assert_response :success
   end
 
   test "should create bug type" do
+    sign_in_as(@admin_user)
     assert_difference('BugType.count', 1) do
       post bug_types_url, params: { bug_type: { name: "Mealworm" } }
     end
@@ -28,6 +30,14 @@ class BugTypesControllerTest < ActionDispatch::IntegrationTest
   test "should show bug_type" do
     get bug_type_url(@bug_type)
     assert_response :success
+  end
+
+  test "should not create bug_type if not admin" do
+    assert_no_difference('BugType.count') do
+      post bug_types_url, params: { bug_type: { name: "Mealworm" } }
+    end
+
+    assert_redirected_to bug_types_url
   end
 
   # test "should get edit" do
