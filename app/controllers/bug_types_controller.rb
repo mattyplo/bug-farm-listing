@@ -7,6 +7,7 @@ class BugTypesController < ApplicationController
 
   def show
     @bug_type = BugType.find(params[:id])
+    @farms = @bug_type.farms.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -20,6 +21,20 @@ class BugTypesController < ApplicationController
       redirect_to @bug_type
     else
       render 'new'
+    end
+  end
+
+  def edit 
+    @bug_type = BugType.find(params[:id])
+  end
+
+  def update
+    @bug_type = BugType.find(params[:id])
+    if @bug_type.update(bug_type_params)
+      flash[:notice] = "Category name updated successfully"
+      redirect_to @bug_type 
+    else 
+      render 'edit'
     end
   end
 

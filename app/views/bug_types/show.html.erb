@@ -1,1 +1,19 @@
 <h1 class="text-center mt-4"><%= @bug_type.name %></h1>
+
+<% if logged_in? && current_user.admin? %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit Bug Type", edit_bug_type_path(@bug_type), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+
+<h3 class="text-center mt-4">Farms</h3>
+
+<div class="flickr_pagination">
+  <%= will_paginate @farms, :container => false %>
+</div>
+
+<%= render 'farms/farm' %>
+
+<div class="flickr_pagination">
+  <%= will_paginate @farms, :container => false %>
+</div>

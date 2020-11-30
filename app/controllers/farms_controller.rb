@@ -49,7 +49,7 @@ class FarmsController < ApplicationController
   end
 
   def farm_params
-    params.require(:farm).permit(:name, :description, :website, :country)
+    params.require(:farm).permit(:name, :description, :website, :country, bug_type_ids: [])
   end
 
   def require_same_user

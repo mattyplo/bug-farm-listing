@@ -15,6 +15,15 @@
             <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of the farm" %>
           </div>
         </div>
+        
+        <div class="form-group row">
+          <%= f.label :bug_type, class: "col-sm-2 col-form-label text-light"  %>
+          <div class="col-sm-10">
+            <%= f.collection_select(:bug_type_ids, BugType.all, :id, :name,
+             { prompt: "Make your selection from the list below (can be empty)" }, { multiple: true, size: 4, class: "form-control shadow rounded" }) %>
+          </div>
+        </div>
+
         <div class="form-group row">
           <%= f.label :website, class: "col-sm-2 col-form-label text-light"  %>
           <div class="col-sm-10">
