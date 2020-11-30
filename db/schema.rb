@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_195439) do
+ActiveRecord::Schema.define(version: 2020_11_30_013116) do
 
   create_table "bug_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "farm_bug_types", force: :cascade do |t|
+    t.integer "farm_id"
+    t.integer "bug_type_id"
   end
 
   create_table "farms", force: :cascade do |t|
